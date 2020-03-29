@@ -1,0 +1,57 @@
+<div style="text-align: center;" class="container">
+  <form (ngSubmit)="addTask()">
+    <input type="text" class="form-control" name="taskName" placeholder="What needs to be done?" [(ngModel)]="taskName" >
+  </form>
+<div class="todo-item" *ngFor="let todo of todosFiltered()">
+  <div class="todo-item-left">
+    <input type="checkbox" [(ngModel)]="todo.status" (click) ="toggleStatus(todo)"/>
+    <div class="todo-item-label" [ngClass]="{ completed: todo.status }">
+      {{ this.todo.taskName }}
+    </div>
+  </div>
+  <div class="remove-item" (click)="deleteTodo(todo)">
+    &times;
+  </div>
+</div>
+
+<div class="extra-container">
+  <div>
+    <label
+      ><input
+        type="checkbox"
+        (change)="checkAllTodos()"
+        [(ngModel)]="!incomplete"
+      />
+      Check All</label
+    >
+  </div>
+  <div>{{ incomplete }} items left</div>
+</div>
+
+<div class="extra-container">
+  <div>
+    <button [ngClass]="{ active: filter === 'all' }" (click)="filter = 'all'">
+      All
+    </button>
+    <button
+      [ngClass]="{ active: filter === 'active' }"
+      (click)="filter = 'active'"
+    >
+      Active
+    </button>
+    <button
+      [ngClass]="{ active: filter === 'completed' }"
+      (click)="filter = 'completed'"
+    >
+      Completed
+    </button>
+  </div>
+
+<div>
+  <div *ngIf="todos.length!=incomplete">
+    <button (click)="clearCompleted()">Clear Completed</button>
+  </div>
+</div>
+
+</div>
+  
