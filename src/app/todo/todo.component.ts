@@ -59,8 +59,9 @@ export class TodoComponent implements OnInit {
       
     }
     let url = "http://localhost:8080/addTask";
-    this.httpClient.post(url, this.newTodo).subscribe(
+    this.httpClient.post<number>(url, this.newTodo).subscribe(
       res=>{
+      this.newTodo.taskId = res;
         // location.reload();
       },
       err=>{
