@@ -8,7 +8,7 @@ public interface TaskService {
 
 	List<TaskDTO> getAllTasks();
 
-	void addTask(TaskDTO taskDTO);
+	int addTask(TaskDTO taskDTO);
 
 	void toggleStatus(TaskDTO taskDTO);
 

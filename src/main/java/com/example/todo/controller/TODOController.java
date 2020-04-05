@@ -36,8 +36,8 @@ public class TODOController {
     }
 
     @PostMapping("/addTask")
-    public void addTask(@RequestBody TaskDTO taskDTO){
-        service.addTask(taskDTO);
+    public int addTask(@RequestBody TaskDTO taskDTO){
+        return service.addTask(taskDTO);
     }
 
     @GetMapping("/clearCompleted")

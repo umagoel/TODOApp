@@ -28,11 +28,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void addTask(TaskDTO taskDTO){
+    public int addTask(TaskDTO taskDTO){
         Task task = new Task();
         task.setTaskName(taskDTO.getTaskName());
         task.setStatus((short)0);
-        repository.save(task);
+        task = repository.save(task);
+        return task.getTaskId();
     }
 
     @Override
